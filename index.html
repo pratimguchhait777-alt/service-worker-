@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIENCE_IX</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #1e293b;
+            --accent-color: #6366f1;
+            --admin-color: #10b981;
+            --text-color: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none; /* Prevents text copying */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Anti-Screenshot/Screen Recorder Overlay (Basic CSS Measure) */
+        @media print {
+            body { display: none; }
+        }
+
+        /* Welcome Screen Animation */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .welcome-box {
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .welcome-box h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #818cf8, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-box input {
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            text-align: center;
+            width: 250px;
+            transition: all 0.3s;
+        }
+
+        .welcome-box input:focus {
+            box-shadow: 0 0 15px var(--accent-color);
+            width: 280px;
+        }
+
+        .welcome-box button {
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .welcome-box button:hover {
+            transform: scale(1.05);
+            background: #4f46e5;
+        }
+
+        /* Main Dashboard Layout */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #818cf8;
+        }
+
+        .user-stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .xp-badge {
+            background: linear-gradient(45deg, #f59e0b, #ef4444);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+        }
+
+        .admin-badge {
+            background: var(--admin-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .subject-section {
+            margin-bottom: 50px;
+        }
+
+        .subject-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .slot-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .slot-card h3 {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            font-size: 1.4rem;
+        }
+
+        /* Content Lists */
+        .content-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .content-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-view {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border: none;
+        }
+
+        /* Admin Upload Section Inside Cards */
+        .admin-upload-panel {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .admin-upload-panel input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            background: #334155;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        .upload-label:hover { background: #475569; }
+
+        /* Viewer Modal */
+        #viewer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            width: 85%;
+            height: 85%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        #view-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <div class="welcome-box">
+            <h1>Welcome to SCIENCE_IX</h1>
+            <p style="color: #94a3b8; margin-bottom: 25px;">Igniting minds through science</p>
+            <input type="text" id="username-input" placeholder="Enter your name..." autocomplete="off"><br>
+            <button onclick="entrySetup()">Enter Dashboard</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">SCIENCE_IX</div>
+        <div class="user-stats">
+            <span id="welcome-user" style="font-weight: 500;">Student</span>
+            <div id="admin-indicator" class="admin-badge">ADMIN MODE</div>
+            <div class="xp-badge">✨ <span id="xp-count">0</span> XP</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="subject-section">
+            <h2 class="subject-title">Physics</h2>
+            <div class="slots-grid">
+                <div class="slot-card">
+                    <h3>Class Notes (PDF)</h3>
+                    <ul class="content-list" id="phy-notes">
+                        <div class="content-item"><span>Ch 1: Motion Notes.pdf</span><button class="btn-view" onclick="viewMaterial('sample.pdf', false)">View</button></div>
+                    </ul>
+                    <div class="admin-upload-panel">
+                        <label class="upload-label"><input type="file" accept=".pdf" onchange="uploadFile(this, 'phy-notes', 'pdf')">Choose PDF</label>
+                    </div>
+                </div>
+                <div class="slot-card">
+                    <h3>Daily Practice Papers (DPP)</h3>
+                    <ul class="content-list" id="phy-dpps">
+                        <div class="content-item"><span>DPP 1: Kinematics</span><button class="btn-view" onclick="viewMaterial('dpp1.html', true)">Attempt</button></div>
+                    </ul>
+                    <div class="admin-upload-panel">
+                        <label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'phy-dpps', 'html')">Choose HTML</label>
+                    </div>
+                </div>
+                <div class="slot-card">
+                    <h3>Monthly Tests</h3>
+                    <ul class="content-list" id="phy-tests">
+                        <div class="content-item"><span>May Monthly Test</span><button class="btn-view" onclick="viewMaterial('test1.html', true)">Start Test</button></div>
+                    </ul>
+                    <div class="admin-upload-panel">
+                        <label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'phy-tests', 'html')">Choose HTML</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subject-section">
+            <h2 class="subject-title">Chemistry</h2>
+            <div class="slots-grid">
+                <div class="slot-card">
+                    <h3>Class Notes (PDF)</h3>
+                    <ul class="content-list" id="chem-notes"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".pdf" onchange="uploadFile(this, 'chem-notes', 'pdf')">Choose PDF</label></div>
+                </div>
+                <div class="slot-card">
+                    <h3>Daily Practice Papers (DPP)</h3>
+                    <ul class="content-list" id="chem-dpps"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'chem-dpps', 'html')">Choose HTML</label></div>
+                </div>
+                <div class="slot-card">
+                    <h3>Monthly Tests</h3>
+                    <ul class="content-list" id="chem-tests"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'chem-tests', 'html')">Choose HTML</label></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subject-section">
+            <h2 class="subject-title">Biology</h2>
+            <div class="slots-grid">
+                <div class="slot-card">
+                    <h3>Class Notes (PDF)</h3>
+                    <ul class="content-list" id="bio-notes"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".pdf" onchange="uploadFile(this, 'bio-notes', 'pdf')">Choose PDF</label></div>
+                </div>
+                <div class="slot-card">
+                    <h3>Daily Practice Papers (DPP)</h3>
+                    <ul class="content-list" id="bio-dpps"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'bio-dpps', 'html')">Choose HTML</label></div>
+                </div>
+                <div class="slot-card">
+                    <h3>Monthly Tests</h3>
+                    <ul class="content-list" id="bio-tests"></ul>
+                    <div class="admin-upload-panel"><label class="upload-label"><input type="file" accept=".html" onchange="uploadFile(this, 'bio-tests', 'html')">Choose HTML</label></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="viewer-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeViewer()">&times; Close</span>
+            <iframe id="view-frame" src="" oncontextmenu="return false;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // App State Variables
+        let currentXP = parseInt(localStorage.getItem('userXP')) || 0;
+        let isAdmin = false;
+
+        document.getElementById('xp-count').innerText = currentXP;
+
+        // Welcome Entry & Administration Setup
+        function entrySetup() {
+            const nameInput = document.getElementById('username-input').value.trim();
+            if (!nameInput) {
+                alert("Please enter a name to proceed!");
+                return;
+            }
+
+            document.getElementById('welcome-user').innerText = nameInput;
+
+            // Check for Admin Mode ("PRATIM")
+            if (nameInput.toUpperCase() === "PRATIM") {
+                isAdmin = true;
+                document.getElementById('admin-indicator').style.display = 'inline-block';
+                // Show all upload panels for the administrator
+                const panels = document.querySelectorAll('.admin-upload-panel');
+                panels.forEach(panel => panel.style.display = 'block');
+            }
+
+            // Slide out animation
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.style.transform = 'translateY(-100%)';
+        }
+
+        // View File System & Grant XP
+        function viewMaterial(fileUrl, awardXP) {
+            const modal = document.getElementById('viewer-modal');
+            const frame = document.getElementById('view-frame');
+            
+            // Appending '#toolbar=0' helps prevent students from finding download/print buttons on default PDF view layers
+            frame.src = fileUrl + (fileUrl.endsWith('.pdf') ? '#toolbar=0&navpanes=0&scrollbar=0' : '');
+            modal.style.display = 'flex';
+
+            if (awardXP && !isAdmin) {
+                currentXP += 10;
+                localStorage.setItem('userXP', currentXP);
+                document.getElementById('xp-count').innerText = currentXP;
+            }
+        }
+
+        function closeViewer() {
+            const modal = document.getElementById('viewer-modal');
+            const frame = document.getElementById('view-frame');
+            frame.src = "";
+            modal.style.display = 'none';
+        }
+
+        // Admin File Simulation (Local Object URLs)
+        function uploadFile(inputElement, targetListId, dynamicType) {
+            const file = inputElement.files[0];
+            if (!file) return;
+
+            const targetList = document.getElementById(targetListId);
+            const objectURL = URL.createObjectURL(file);
+            
+            const listItem = document.createElement('div');
+            listItem.className = 'content-item';
+            
+            const actionText = (dynamicType === 'pdf') ? 'View' : 'Attempt';
+            const givesXP = (dynamicType === 'html'); // Gives XP if it's an HTML file (DPP/Test)
+
+            listItem.innerHTML = `
+                <span>${file.name}</span>
+                <button class="btn-view" onclick="viewMaterial('${objectURL}', ${givesXP})">${actionText}</button>
+            `;
+            
+            targetList.appendChild(listItem);
+            inputElement.value = ""; // clear input
+        }
+
+        // Extra Anti-Screen Capture/Inspection Key Blocks
+        document.addEventListener('keydown', function(e) {
+            // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+                (e.ctrlKey && e.key === 'U') ||
+                (e.ctrlKey && e.key === 'p') // Blocks Ctrl + P printing shortcut
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Block Right Click Context Menu on entire page
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
