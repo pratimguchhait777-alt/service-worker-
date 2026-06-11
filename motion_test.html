@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9 Physics: Motion Challenge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --panel-bg: rgba(255, 255, 255, 0.03);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: linear-gradient(90deg, #6366f1, #a855f7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger: #ef4444;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            background: var(--accent-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--panel-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .rules-box {
+            background: rgba(239, 68, 68, 0.06);
+            border-left: 4px solid var(--danger);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .rules-box h3 {
+            margin-top: 0;
+            color: #fca5a5;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .rules-box ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+            color: #cbd5e1;
+        }
+
+        .rules-box li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--panel-border);
+            padding: 14px 20px;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        button {
+            background: var(--accent-glow);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(168, 85, 247, 0.35);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--panel-border);
+            padding: 16px 24px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        #timer {
+            color: var(--danger);
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--panel-border);
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .options-route {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 14px;
+            accent-color: #8b5cf6;
+            width: 18px;
+            height: 18px;
+        }
+
+        .leaderboard-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .leaderboard-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .hidden { display: none !important; }
+        
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MOTION</h1>
+    <div class="subtitle">Class 9 Physics Advanced Evaluation</div>
+    
+    <div id="auth-section" class="panel">
+        <div class="rules-box">
+            <h3>⚠️ STRICT EXAM ENVIRONMENT</h3>
+            <ul>
+                <li><strong>Duration:</strong> Exactly 40 minutes. Auto-submits on completion.</li>
+                <li><strong>Anti-Cheat Shield:</strong> Switching tabs or minimizing this browser window cancels your instance instantly and forces a submission.</li>
+                <li><strong>Offline Support:</strong> Works even if internet drops during the test. Marks will save locally and update instantly.</li>
+            </ul>
+        </div>
+        
+        <div class="form-group">
+            <label for="username">CANDIDATE FULL NAME</label>
+            <input type="text" id="username" placeholder="Type your name to begin..." required>
+        </div>
+        <button id="start-btn" onclick="startQuiz()">Unlock & Start Examination</button>
+        
+        <div class="leaderboard-title">🏆 Scoreboard <span id="online-status" class="status-badge">Checking...</span></div>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-data">
+                <tr><td colspan="4" style="text-align:center; color: var(--text-muted);">Syncing board database...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="quiz-section" class="hidden">
+        <div class="quiz-header">
+            <div id="candidate-name" style="font-weight: 500;">Tracking: --</div>
+            <div id="timer">Time Left: 40:00</div>
+        </div>
+
+        <form id="quiz-form">
+            <div id="questions-container"></div>
+            <button type="button" style="margin-top: 20px;" onclick="submitQuiz(false)">Finalize & Submit Exam</button>
+        </form>
+    </div>
+
+    <div id="result-section" class="panel hidden" style="text-align: center;">
+        <h2>Instance Terminated</h2>
+        <div id="result-box" style="margin: 30px 0; font-size: 1.2rem; line-height: 1.6;"></div>
+        <button onclick="window.location.reload()">Return to Terminal</button>
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, collection, addDoc, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCZVe4wuhnXD4vs5NxSz9yhKtzNpa6Sivg",
+      authDomain: "science-ix-87252.firebaseapp.com",
+      projectId: "science-ix-87252",
+      storageBucket: "science-ix-87252.firebasestorage.app",
+      messagingSenderId: "387959998990",
+      appId: "1:387959998990:web:83e19bec709349035cca5f",
+      measurementId: "G-D77S762S3F"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    
+    // Initializing Firestore with persistent offline caching activated
+    const db = initializeFirestore(app, {
+        localCache: persistentLocalCache({
+            tabManager: persistentMultipleTabManager()
+        })
+    });
+
+    // Monitor connectivity status visually
+    const statusBadge = document.getElementById("online-status");
+    function updateOnlineStatus() {
+        if (navigator.onLine) {
+            statusBadge.innerText = "Online & Syncing";
+            statusBadge.style.color = "var(--success)";
+        } else {
+            statusBadge.innerText = "Offline (Saving Locally)";
+            statusBadge.style.color = "var(--danger)";
+        }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    const questions = [
+        { q: "A particle moves over a semi-circular track of radius R in time t. What is the magnitude of its average velocity?", options: ["πR / t", "2R / t", "Zero", "2πR / t"], correct: 1 },
+        { q: "An object dropped from a cliff falls a distance h in the last second of its fall. If it was dropped from rest and took t seconds to hit ground, total height H is given by:", options: ["g(t - 0.5)", "0.5g(2t - 1)", "gt^2", "0.5g(t - 1)^2"], correct: 1 },
+        { q: "A bullet fired into a fixed target loses half of its velocity after penetrating 3 cm. How much further will it penetrate before coming to rest, assuming constant retardation?", options: ["1.5 cm", "1.0 cm", "3.0 cm", "2.0 cm"], correct: 1 },
+        { q: "The displacement-time graph of a moving particle is a parabola. This implies that the particle is moving with:", options: ["Uniform velocity", "Uniform acceleration", "Decreasing acceleration", "Varying acceleration"], correct: 1 },
+        { q: "A car covers the first half of the distance between two places at a speed of 40 km/h and the second half at 60 km/h. What is its average speed?", options: ["50 km/h", "48 km/h", "45 km/h", "52 km/h"], correct: 1 },
+        { q: "A body starts from rest and moves with uniform acceleration. The ratio of distance covered by it in the 3rd second to that in the 4th second is:", options: ["3 : 4", "5 : 7", "9 : 16", "1 : 2"], correct: 1 },
+        { q: "An object is thrown vertically upwards with a velocity u. It passes a point P at height h at times t1 and t2. Which relation is correct regarding total flight time?", options: ["t1 + t2 = 2u/g", "t1 * t2 = 2h/g", "Both A and B", "None of these"], correct: 2 },
+        { q: "The area under an acceleration-time (a-t) graph represents:", options: ["Initial velocity", "Final velocity", "Change in velocity", "Distance travelled"], correct: 2 },
+        { q: "A body moves along a circular path of radius R. What is its displacement and distance covered when it completes two and a half revolutions?", options: ["Displacement = 2R, Distance = 5πR", "Displacement = 0, Distance = 5πR", "Displacement = 2R, Distance = 2.5πR", "Displacement = R, Distance = 5πR"], correct: 0 },
+        { q: "A stone is dropped into a well 19.6 m deep. The splash is heard 2.06 seconds later. What is the approximate speed of sound in air calculated from this? (Take g = 9.8 m/s²)", options: ["326.6 m/s", "340 m/s", "300 m/s", "316 m/s"], correct: 0 }
+    ];
+
+    let timerInterval;
+    let totalTime = 40 * 60;
+    let studentName = "";
+    let examStarted = false;
+
+    // Using onSnapshot so the leaderboard updates instantly when entries are added locally or remotely
+    function listenToLeaderboard() {
+        const q = query(collection(db, "motion_results"), orderBy("score", "desc"), orderBy("timeTaken", "asc"), limit(10));
+        
+        onSnapshot(q, (querySnapshot) => {
+            const tbody = document.getElementById("leaderboard-data");
+            tbody.innerHTML = "";
+            let rank = 1;
+
+            if (querySnapshot.empty) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color: var(--text-muted);">No records found. Set the first high score!</td></tr>`;
+                return;
+            }
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const mins = Math.floor(data.timeTaken / 60);
+                const secs = data.timeTaken % 60;
+                
+                const row = `<tr>
+                    <td><span style="color: ${rank <= 3 ? '#fbbf24' : 'inherit'}; font-weight: 600;">#${rank++}</span></td>
+                    <td>${escapeHtml(data.name)}</td>
+                    <td style="font-weight:600; color:#a78bfa;">${data.score} / 10</td>
+                    <td style="color: var(--text-muted); font-size:0.9rem;">${mins}m ${secs}s</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }, (error) => {
+            console.error("Snapshot read fault: ", error);
+        });
+    }
+
+    window.startQuiz = function() {
+        studentName = document.getElementById("username").value.trim();
+        if(!studentName) {
+            alert("Please submit your name to create an assessment tracking link.");
+            return;
+        }
+
+        document.getElementById("auth-section").classList.add("hidden");
+        document.getElementById("quiz-section").classList.remove("hidden");
+        document.getElementById("candidate-name").innerText = `Candidate: ${studentName}`;
+        
+        renderQuestions();
+        examStarted = true;
+        
+        document.addEventListener("visibilitychange", handleCheating);
+        window.addEventListener("blur", handleCheating);
+
+        timerInterval = setInterval(() => {
+            if(totalTime <= 0) {
+                clearInterval(timerInterval);
+                submitQuiz(true, "Allocation Time Expired");
+            } else {
+                totalTime--;
+                let mins = Math.floor(totalTime / 60);
+                let secs = totalTime % 60;
+                document.getElementById("timer").innerText = `Time Left: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+    };
+
+    function renderQuestions() {
+        const container = document.getElementById("questions-container");
+        container.innerHTML = "";
+        questions.forEach((q, qIdx) => {
+            let optionsHtml = "";
+            q.options.forEach((opt, oIdx) => {
+                optionsHtml += `
+                    <label class="option">
+                        <input type="radio" name="q${qIdx}" value="${oIdx}">
+                        <span>${escapeHtml(opt)}</span>
+                    </label>
+                `;
+            });
+            container.innerHTML += `
+                <div class="question-card">
+                    <div class="question-text">0${qIdx + 1}. ${escapeHtml(q.q)}</div>
+                    <div class="options-route">${optionsHtml}</div>
+                </div>
+            `;
+        });
+    }
+
+    function handleCheating() {
+        if(examStarted) {
+            document.removeEventListener("visibilitychange", handleCheating);
+            window.removeEventListener("blur", handleCheating);
+            submitQuiz(true, "Security Flag (Tab Modification Detected)");
+        }
+    }
+
+    window.submitQuiz = async function(forced = false, reason = "") {
+        if(!examStarted) return;
+        examStarted = false;
+        clearInterval(timerInterval);
+        
+        document.removeEventListener("visibilitychange", handleCheating);
+        window.removeEventListener("blur", handleCheating);
+
+        let score = 0;
+        questions.forEach((q, qIdx) => {
+            const selected = document.querySelector(`input[name="q${qIdx}"]:checked`);
+            if(selected && parseInt(selected.value) === q.correct) {
+                score++;
+            }
+        });
+
+        const timeSpent = (40 * 60) - totalTime;
+
+        document.getElementById("quiz-section").classList.add("hidden");
+        const resultSection = document.getElementById("result-section");
+        const resultBox = document.getElementById("result-box");
+        resultSection.classList.remove("hidden");
+
+        if(forced) {
+            resultBox.innerHTML = `<p style="color: var(--danger); font-weight:700;">⚠️ EXAMINATION ANNULLED</p>
+            <p style="color: var(--text-muted);">${reason}</p>
+            <p style="font-size: 1.5rem; margin-top:20px;">Evaluated Score: <strong style="color:var(--danger)">${score} / 10</strong></p>`;
+        } else {
+            resultBox.innerHTML = `<p style="color: var(--success); font-weight:700;">Submission Secure</p>
+            <p style="font-size: 1.5rem; margin-top:20px;">Final Graded Score: <strong style="color:var(--success)">${score} / 10</strong></p>`;
+        }
+
+        try {
+            // This pushes directly into the local cache if offline, updating the UI instantly
+            await addDoc(collection(db, "motion_results"), {
+                name: studentName,
+                score: score,
+                timeTaken: timeSpent,
+                status: forced ? `Terminated: ${reason}` : "Completed",
+                timestamp: new Date()
+            });
+        } catch (e) {
+            console.error("Database tracking write error: ", e);
+        }
+    };
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    listenToLeaderboard();
+</script>
+
+</body>
+</html>
