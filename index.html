@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,23 +33,90 @@
       user-select: none;
       -webkit-user-select: none;
     }
+    
+    /* Hardware Accelerated Ultra-Smooth Electron Glow animations */
+    .electron-glow {
+      will-change: transform;
+      filter: drop-shadow(0 0 8px currentColor);
+    }
   </style>
 </head>
 <body class="bg-[#0b0f19] text-slate-100 min-h-screen flex flex-col selection:bg-blue-500 selection:text-white transition-all duration-300">
 
-  <!-- ==================== 5-SECOND ATOM SPLASH OVERLAY ==================== -->
+  <!-- ==================== 5-SECOND HIGH-DEF PATH-LOCKED ATOM SPLASH OVERLAY ==================== -->
   <div id="view-loading" class="fixed inset-0 bg-[#0b0f19] z-50 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out opacity-100">
-    <div class="text-center space-y-6">
-      <div class="relative inline-block">
-        <!-- Outer Glowing Pulse Ring -->
-        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-xl animate-pulse scale-125"></div>
-        <div class="relative animate-spin [animation-duration:8s] text-blue-500">
-          <i data-lucide="atom" class="w-28 h-24"></i>
+    <div class="text-center space-y-8 flex flex-col items-center">
+      
+      <!-- Perfect Math Path-Locked Electron Orbital Engine -->
+      <div class="relative w-64 h-64 flex items-center justify-center">
+        <!-- Outer Glowing Space Aura -->
+        <div class="absolute w-56 h-56 rounded-full bg-blue-500/10 blur-3xl animate-pulse"></div>
+        
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
+          <!-- Orbit Group 1 (Rotated 30 degrees) -->
+          <g transform="rotate(30 100 100)">
+            <path id="orbit1" d="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+            <!-- Electron 1 strictly locked onto Orbit 1 path with native GPU motion -->
+            <g class="electron-glow text-blue-400">
+              <animateMotion dur="3.2s" repeatCount="indefinite" calcMode="paced" path="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" />
+              <circle r="5.5" fill="#60a5fa"/>
+              <circle r="10" fill="#60a5fa" opacity="0.2" class="animate-ping"/>
+            </g>
+          </g>
+
+          <!-- Orbit Group 2 (Rotated 90 degrees) -->
+          <g transform="rotate(90 100 100)">
+            <path id="orbit2" d="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+            <!-- Electron 2 strictly locked onto Orbit 2 path -->
+            <g class="electron-glow text-purple-400">
+              <animateMotion dur="4.2s" repeatCount="indefinite" path="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" />
+              <circle r="5.5" fill="#c084fc"/>
+            </g>
+          </g>
+
+          <!-- Orbit Group 3 (Rotated 150 degrees) -->
+          <g transform="rotate(150 100 100)">
+            <path id="orbit3" d="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+            <!-- Electron 3 strictly locked onto Orbit 3 path -->
+            <g class="electron-glow text-pink-400">
+              <animateMotion dur="2.7s" repeatCount="indefinite" path="M 20,100 A 80,25 0 1,0 180,100 A 80,25 0 1,0 20,100" />
+              <circle r="5.5" fill="#f472b6"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Dynamic Multi-Particle Nucleus in Center -->
+        <div class="absolute w-12 h-12 flex items-center justify-center">
+          <div class="absolute w-10 h-10 rounded-full bg-blue-500/20 blur-md animate-ping"></div>
+          <!-- Proton / Neutron clustered particles -->
+          <div class="w-4 h-4 bg-blue-500 rounded-full absolute -translate-x-1.5 -translate-y-1 shadow shadow-blue-400/50"></div>
+          <div class="w-4 h-4 bg-purple-500 rounded-full absolute translate-x-1.5 translate-y-1 shadow shadow-purple-400/50"></div>
+          <div class="w-4 h-4 bg-pink-500 rounded-full absolute translate-x-0.5 -translate-y-2 shadow shadow-pink-400/50"></div>
+          <div class="w-4 h-4 bg-indigo-500 rounded-full absolute -translate-x-1.5 translate-y-1.5 shadow shadow-indigo-400/50"></div>
         </div>
       </div>
-      <h1 class="text-3xl font-black tracking-widest text-slate-100 uppercase bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">SCIENCE_IX</h1>
-      <p class="text-xs font-bold tracking-widest text-slate-400 uppercase">Synchronizing Workspace Core...</p>
+
+      <div class="space-y-2">
+        <h1 class="text-4xl font-black tracking-widest text-white uppercase bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent animate-pulse">SCIENCE_IX</h1>
+        <p class="text-xs font-bold tracking-widest text-slate-400 uppercase">Synchronizing Workspace Core...</p>
+      </div>
     </div>
+  </div>
+
+  <!-- ==================== STUDY COMPANION DYNAMIC XP STOPWATCH ==================== -->
+  <div id="pdf-study-timer-bar" class="fixed top-4 left-1/2 -translate-x-1/2 bg-slate-900/95 border-2 border-emerald-500/40 px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-4 z-50 transition-all duration-300 transform -translate-y-24 opacity-0">
+    <div class="flex items-center gap-2">
+      <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></div>
+      <p class="text-xs font-bold text-slate-100">Studying Document: <span id="pdf-timer-title" class="text-emerald-400">PDF Solution Deck</span></p>
+    </div>
+    <div class="h-4 w-[1px] bg-slate-800"></div>
+    <div class="flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-400">
+      <i data-lucide="timer" class="w-4 h-4 animate-spin text-emerald-400"></i>
+      <span id="pdf-timer-elapsed">0 minutes</span>
+    </div>
+    <div class="h-4 w-[1px] bg-slate-800"></div>
+    <p class="text-[10px] font-black uppercase text-emerald-400 font-mono tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded">+<span id="pdf-timer-xp-gained">0</span> XP gained</p>
+    <button onclick="terminatePdfStudySession()" class="text-xs font-bold text-slate-400 hover:text-white transition px-2 py-1 rounded bg-slate-800 hover:bg-slate-700">Save & Close</button>
   </div>
 
   <!-- ==================== TOP NAVIGATION BAR ==================== -->
@@ -59,7 +125,7 @@
       <!-- Logo and Brand -->
       <div class="flex items-center gap-3">
         <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-lg shadow-blue-500/20 flex items-center justify-center shrink-0">
-          <i data-lucide="atom" class="w-6 h-6"></i>
+          <i data-lucide="atom" class="w-6 h-6 animate-pulse"></i>
         </div>
         <div class="flex flex-col justify-center">
           <span class="font-black text-xl tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent leading-none pb-0.5">SCIENCE_IX</span>
@@ -111,7 +177,7 @@
         </div>
 
         <button type="submit" id="login-submit-button" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm transition transform active:scale-95 shadow-lg shadow-blue-500/20">
-          Access Study Deck
+          Access Study Workspace
         </button>
       </form>
     </div>
@@ -235,11 +301,11 @@
 
   <!-- ==================== VIEW 2: SUBJECT DIRECTORY FOLDERS (LEVEL 1) ==================== -->
   <div id="view-classes-folders" class="max-w-3xl w-full mx-auto px-4 py-8 hidden space-y-6 animate-in fade-in duration-200">
-    <!-- Static PW Notification Banner -->
+    <!-- PW Progress Helper Banner -->
     <div class="bg-slate-900/90 text-slate-300 border border-slate-800 px-4 py-3 rounded-2xl flex items-center justify-between shadow-lg relative">
       <div class="flex items-center gap-2.5">
         <div class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></div>
-        <p class="text-xs font-semibold">Completion % depends on lecture and DPP progress!</p>
+        <p class="text-xs font-semibold">Completion % depends on lectures, DPPs, notes, and secure tests!</p>
       </div>
       <button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-slate-300 transition">
         <i data-lucide="x" class="w-4 h-4"></i>
@@ -253,12 +319,12 @@
         </button>
         <div>
           <h1 class="text-xl font-bold text-white tracking-tight">Academic Subjects</h1>
-          <p class="text-xs text-slate-400">Classrooms configured dynamically with real-time status tracking</p>
+          <p class="text-xs text-slate-400">Select standard modules to track resource completion progress</p>
         </div>
       </div>
     </div>
 
-    <!-- SUBJECTS WORKSPACE LIST (Premium Dark Cards matching Screenshot 1 layout) -->
+    <!-- SUBJECTS WORKSPACE LIST (Sleek Dark Cards showing custom computed student-specific progress) -->
     <div id="subject-cards-list" class="space-y-4"></div>
   </div>
 
@@ -271,7 +337,7 @@
         </button>
         <div>
           <h1 id="chapters-subject-title" class="text-xl font-bold text-white">Subject Chapters</h1>
-          <p class="text-xs text-slate-400">Interactive curriculum modules and progress indexes</p>
+          <p class="text-xs text-slate-400">Syllabus directories containing modules, DPPs, and solutions</p>
         </div>
       </div>
       <!-- Add Chapter Admin Trigger -->
@@ -283,10 +349,10 @@
     <!-- Chapters & Study Material Navigation Pill Header -->
     <div class="flex border-b border-slate-800/80">
       <button class="px-5 py-2.5 font-bold text-sm text-[#A088FF] border-b-2 border-[#A088FF] transition focus:outline-none">Chapters</button>
-      <button onclick="showToast('Materials are listed inside each individual chapter deck.', 'info')" class="px-5 py-2.5 font-semibold text-sm text-slate-500 hover:text-slate-300 transition focus:outline-none">Study Material</button>
+      <button onclick="showToast('Materials are organized directly within each chapter syllabus deck.', 'info')" class="px-5 py-2.5 font-semibold text-sm text-slate-500 hover:text-slate-300 transition focus:outline-none">Study Material</button>
     </div>
 
-    <!-- CHAPTERS DIRECTORY LIST (Pic 2 Layout) -->
+    <!-- CHAPTERS DIRECTORY LIST (Pic 2 Layout with Admin Delete Control) -->
     <div id="chapters-list-container" class="space-y-4"></div>
   </div>
 
@@ -299,19 +365,20 @@
         </button>
         <div>
           <div class="flex items-center gap-2">
-            <span id="detail-chapter-code" class="text-[10px] bg-blue-500/10 text-blue-400 font-extrabold px-2 py-0.5 rounded border border-blue-500/20">CH - 01</span>
+            <!-- Dynamic detailed tag header (CH 03 MOTION style) -->
+            <span id="detail-chapter-code" class="text-[11px] bg-indigo-500/10 text-indigo-300 font-extrabold px-3 py-1 rounded-md border border-indigo-500/30 uppercase font-mono tracking-wider shadow-[0_0_12px_rgba(99,102,241,0.15)]">CH - 01</span>
             <h1 id="detail-chapter-title" class="text-lg font-bold text-white">Chapter Syllabus</h1>
           </div>
-          <p id="detail-subject-sub" class="text-xs text-slate-400">Syllabus deck details and assignments</p>
+          <p id="detail-subject-sub" class="text-xs text-slate-400 mt-1 font-medium font-sans">Syllabus deck details and assignments</p>
         </div>
       </div>
 
-      <!-- Quick Admin actions panel to add/delete resources or secure assessments -->
+      <!-- Quick Admin actions panel to publish items or tests -->
       <div class="flex gap-2 flex-wrap">
         <button id="admin-publish-payload-btn" onclick="openAdminContentPublishModal()" class="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 hidden animate-pulse">
           <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Publish Resource
         </button>
-        <button id="admin-add-test-btn" onclick="openAdminAddTestModal()" class="bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 hidden animate-pulse">
+        <button id="admin-add-test-btn" onclick="openAdminAddTestModal()" class="bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 hidden">
           <i data-lucide="shield-plus" class="w-3.5 h-3.5"></i> Add Secure Test
         </button>
         <button id="launch-test-btn" onclick="launchMonthlyTestEnvironment()" class="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/20 px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
@@ -342,7 +409,7 @@
   <!-- ==================== ADMIN: ADD CHAPTERS MODAL ==================== -->
   <div id="modal-admin-add-chapter" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center z-50 p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
         <h3 class="text-base font-bold text-white flex items-center gap-2">
           <i data-lucide="plus-circle" class="w-5 h-5 text-purple-400"></i> Add Chapter Module
         </h3>
@@ -375,7 +442,7 @@
   <!-- ==================== ADMIN ADD TEST MODAL ==================== -->
   <div id="modal-admin-add-test" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center z-50 p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
         <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="shield-plus" class="w-5 h-5 text-purple-400"></i> Add Secure Test</h3>
         <button onclick="closeAdminAddTestModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
@@ -406,7 +473,7 @@
   <!-- ==================== ADMIN OPERATIONS SCHEDULER MODAL ==================== -->
   <div id="modal-admin-scheduler" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center z-50 p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
         <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="plus-circle" class="w-5 h-5 text-blue-500"></i> Add Weekly Schedule</h3>
         <button onclick="closeAdminSchedulerModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
@@ -440,7 +507,7 @@
   <!-- ==================== ADMIN CONTENT PAYLOAD PUBLISHER MODAL ==================== -->
   <div id="modal-admin-publisher" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center z-50 p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
         <h3 id="admin-publisher-subject-title" class="text-sm font-bold text-white uppercase tracking-wider">Publish New Material Entry</h3>
         <button onclick="closeAdminContentPublishModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
@@ -515,53 +582,47 @@
     </div>
   </div>
 
-  <!-- ==================== CONTROLLER: AVATAR SELECTION ENGINE ==================== -->
-  <div id="modal-avatar-selector" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center z-50 p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-sm p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
-      <div class="flex items-center justify-between">
-        <h3 class="text-sm font-bold text-white">Select Your Profile Avatar</h3>
-        <button onclick="closeAvatarSelectorModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+  <!-- ==================== CONTROLLER: NOTE STUDY WINDOW MODAL ==================== -->
+  <div id="modal-note-viewer" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-2xl p-6 md:p-8 shadow-2xl flex flex-col max-h-[90vh] space-y-6 animate-in fade-in zoom-in-95 duration-150">
+      <div class="flex items-start justify-between border-b border-slate-800/80 pb-3">
+        <div>
+          <h3 id="note-viewer-header" class="text-xl font-black text-white">Classroom Lesson Note</h3>
+          <p class="text-xs text-blue-400 mt-1">Study session active. Keep reading to automatically gain dynamic XP bonuses!</p>
+        </div>
+        <div class="bg-blue-500/10 border border-blue-500/20 text-blue-400 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 text-xs font-bold shrink-0">
+          <i data-lucide="timer" class="w-4 h-4 animate-spin text-blue-400"></i>
+          <span id="note-session-timer">0 minutes</span>
+        </div>
       </div>
-      <div class="space-y-3">
-        <p class="text-[10px] uppercase font-bold text-blue-400 tracking-wider">Boys Avatars</p>
-        <div class="grid grid-cols-4 gap-3">
-          <div onclick="changeUserAvatar('Milo')" class="cursor-pointer border border-slate-800 hover:border-blue-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Milo">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Milo</span>
-          </div>
-          <div onclick="changeUserAvatar('Alexander')" class="cursor-pointer border border-slate-800 hover:border-blue-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Alexander">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Alex</span>
-          </div>
-          <div onclick="changeUserAvatar('Lucas')" class="cursor-pointer border border-slate-800 hover:border-blue-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Lucas">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Lucas</span>
-          </div>
-          <div onclick="changeUserAvatar('Ethan')" class="cursor-pointer border border-slate-800 hover:border-blue-500 p-1 rounded-xl bg-slate-950 text-center transition flex flex-col justify-center items-center">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Ethan">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Ethan</span>
-          </div>
-        </div>
+      <div class="flex-grow overflow-y-auto bg-slate-950/80 border border-slate-800 p-5 rounded-2xl text-slate-300 text-sm leading-relaxed whitespace-pre-wrap custom-scrollbar" id="note-viewer-text-content"></div>
+      <div class="flex justify-end gap-3 shrink-0 pt-3 border-t border-slate-800/80">
+        <button onclick="terminateNoteSession()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition transform active:scale-95 shadow-lg shadow-blue-500/20">Mark as Completed & Close</button>
+      </div>
+    </div>
+  </div>
 
-        <p class="text-[10px] uppercase font-bold text-pink-400 tracking-wider pt-2">Girls Avatars</p>
-        <div class="grid grid-cols-4 gap-3">
-          <div onclick="changeUserAvatar('Sasha')" class="cursor-pointer border border-slate-800 hover:border-pink-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Sasha">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Sasha</span>
-          </div>
-          <div onclick="changeUserAvatar('Zoe')" class="cursor-pointer border border-slate-800 hover:border-pink-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Zoe</span>
-          </div>
-          <div onclick="changeUserAvatar('Lily')" class="cursor-pointer border border-slate-800 hover:border-pink-500 p-1 rounded-xl bg-slate-950 text-center transition">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Lily">
-            <span class="text-[9px] text-slate-400 block mt-1 font-semibold">Lily</span>
-          </div>
-          <div onclick="changeUserAvatar('Maya')" class="cursor-pointer border border-slate-800 hover:border-pink-500 p-1 rounded-xl bg-slate-950 text-center transition font-semibold">
-            <img class="w-10 h-10 mx-auto rounded-lg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Maya">
-            <span class="text-[9px] text-slate-400 block mt-1">Maya</span>
-          </div>
+  <!-- ==================== CONTROLLER: EXAM / ASSESSMENT PROCTORED SANDBOX ==================== -->
+  <div id="view-exam-sandbox" class="fixed inset-0 bg-[#070a13] z-50 flex flex-col items-center justify-center p-4 md:p-8 hidden overflow-y-auto">
+    <div class="max-w-3xl w-full space-y-6 my-auto">
+      <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl flex items-center justify-between text-red-400">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shield-alert" class="w-5 h-5 animate-pulse"></i>
+          <span class="text-xs font-bold uppercase tracking-wider">Secured Proctored Sandbox View (Anti-Cheating Policy Active)</span>
         </div>
+        <span class="text-xs bg-red-500/20 px-2.5 py-1 rounded font-black">ACTIVE MONITORING</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <h2 id="exam-sandbox-title" class="text-2xl font-black text-white">Assessment Diagnostics</h2>
+        <button onclick="terminateSecureAssessment()" class="text-slate-400 hover:text-white text-xs font-bold bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl transition">Cancel Exam</button>
+      </div>
+
+      <!-- Exam Questions container -->
+      <div id="exam-question-target" class="space-y-6"></div>
+
+      <div class="pt-4 flex justify-end">
+        <button onclick="commitSecureExamAnswers()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black px-8 py-4 rounded-2xl text-sm transition transform active:scale-95 shadow-lg shadow-emerald-500/10">Submit Verification & Exit</button>
       </div>
     </div>
   </div>
@@ -576,7 +637,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     // --- SYSTEM LOCAL STATE ---
@@ -600,7 +661,7 @@
       completedItemsRegistry: {} // Stores completed items to avoid double-XP gains
     };
 
-    // --- HARDCODED PRELOADED LEADERBOARD DATA (Fixed IDs to resolve Duplication) ---
+    // --- PRELOADED LEADERBOARD DATA (Fixed IDs to resolve Duplication) ---
     let fallbackLeaderboard = [
       { id: "rajdeep chakroborty", name: "RAJDEEP CHAKROBORTY", streak: 8, xp: 1825, avatar: "Lucas" },
       { id: "abd kartik", name: "ABD KARTIK", streak: 1, xp: 1500, avatar: "Milo" },
@@ -619,7 +680,7 @@
       { id: "class_2", subject: "Chemistry", topic: "Atoms, Valence & Chemical Formulas", teacher: "Amit Mahajan Sir", time: "Wednesday 04:30 PM" }
     ];
 
-    // --- RE-INSTATED IMMERSIVE NESTED DIRECTORY AND PROGRESS CONFIGURATION ---
+    // --- IMMERSIVE NESTED DIRECTORY AND PROGRESS CONFIGURATION ---
     let folderSystemData = {
       Physics: {
         abbr: "Ph",
@@ -731,16 +792,32 @@
 
     let db, auth;
     
-    // --- EXACT LIVE FIREBASE CONFIGURATION (pointed to science-ix-87252) ---
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-      apiKey: "AIzaSyCZVe4wuhnXD4vs5NxSz9yhKtzNpa6Sivg",
-      authDomain: "science-ix-87252.firebaseapp.com",
-      projectId: "science-ix-87252",
-      storageBucket: "science-ix-87252.firebasestorage.app",
-      messagingSenderId: "387959998990",
-      appId: "1:387959998990:web:83e19bec709349035cca5f",
-      measurementId: "G-D77S762S3F"
-    };
+    // --- SAFE DUAL-PARSING CONFIGURATION SYSTEM ---
+    let firebaseConfig;
+    try {
+      firebaseConfig = typeof __firebase_config !== 'undefined' 
+        ? (typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config)
+        : {
+            apiKey: "AIzaSyCZVe4wuhnXD4vs5NxSz9yhKtzNpa6Sivg",
+            authDomain: "science-ix-87252.firebaseapp.com",
+            projectId: "science-ix-87252",
+            storageBucket: "science-ix-87252.firebasestorage.app",
+            messagingSenderId: "387959998990",
+            appId: "1:387959998990:web:83e19bec709349035cca5f",
+            measurementId: "G-D77S762S3F"
+          };
+    } catch (e) {
+      console.error("Firebase config parse error fallback:", e);
+      firebaseConfig = {
+        apiKey: "AIzaSyCZVe4wuhnXD4vs5NxSz9yhKtzNpa6Sivg",
+        authDomain: "science-ix-87252.firebaseapp.com",
+        projectId: "science-ix-87252",
+        storageBucket: "science-ix-87252.firebasestorage.app",
+        messagingSenderId: "387959998990",
+        appId: "1:387959998990:web:83e19bec709349035cca5f",
+        measurementId: "G-D77S762S3F"
+      };
+    }
 
     const appId = typeof __app_id !== 'undefined' ? __app_id : "science-ix-87252";
 
@@ -752,13 +829,17 @@
 
     // --- INITIALIZATION ---
     window.onload = function() {
-      // 5-Second Atom Loading screen timer trigger
+      lucide.createIcons();
+      
+      // Fixed 5-Second elegant custom Atom Loader
       setTimeout(() => {
         const loadingScreen = document.getElementById('view-loading');
         if (loadingScreen) {
           loadingScreen.classList.add('opacity-0', 'pointer-events-none');
           setTimeout(() => {
             loadingScreen.classList.add('hidden');
+            // Safely show screen layout after loader fades away
+            showInitialViewLayout();
           }, 1000);
         }
       }, 5000);
@@ -768,6 +849,47 @@
       renderSubjectsView();
       setupBackButtonSupport();
     };
+
+    // --- DECIDE VIEW LAYOUT POST-ANIMATION (BYPASSES LOCKS COMPLETELY) ---
+    async function showInitialViewLayout() {
+      const savedUser = localStorage.getItem("science_ix_saved_user");
+      if (savedUser) {
+        // Safe fast recovery
+        appState.user = savedUser;
+        appState.role = localStorage.getItem("science_ix_saved_role") || "student";
+        const userNameEl = document.getElementById('user-display-name');
+        if (userNameEl) userNameEl.innerText = savedUser;
+        toggleRoleSpecificElements(appState.role);
+        
+        // Local Sync values
+        appState.xp = parseInt(localStorage.getItem(`science_ix_xp_${savedUser.toLowerCase()}`)) || 0;
+        appState.streak = parseInt(localStorage.getItem(`science_ix_streak_${savedUser.toLowerCase()}`)) || 1;
+        appState.avatar = localStorage.getItem(`science_ix_avatar_${savedUser.toLowerCase()}`) || "Milo";
+        
+        const localRegistry = localStorage.getItem(`science_ix_registry_${savedUser.toLowerCase()}`);
+        appState.completedItemsRegistry = localRegistry ? JSON.parse(localRegistry) : {};
+
+        const avatarImg = document.getElementById('user-avatar');
+        if (avatarImg) avatarImg.src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${appState.avatar}`;
+        
+        const xpCount = document.getElementById('header-xp-count');
+        if (xpCount) xpCount.innerText = appState.xp;
+        
+        const streakCount = document.getElementById('header-streak-count');
+        if (streakCount) streakCount.innerText = appState.streak;
+
+        pushCurrentStudentIntoLeaderboard();
+        
+        // Load dynamically saved curriculum from backend before rendering subject directories!
+        await loadCurriculumData();
+        
+        document.getElementById('view-dashboard').classList.remove('hidden');
+        document.getElementById('view-login').classList.add('hidden');
+      } else {
+        document.getElementById('view-login').classList.remove('hidden');
+        document.getElementById('view-dashboard').classList.add('hidden');
+      }
+    }
 
     // --- SECURED MOBILE BACK BUTTON HANDLING (Popstate History State Router) ---
     function setupBackButtonSupport() {
@@ -822,6 +944,12 @@
 
     // --- FIREBASE CONNECTION & AUTHENTICATION (RULE 3) ---
     async function initFirebaseConnection() {
+      // 3 Second connection fail-safe backup limit
+      const authTimeout = setTimeout(() => {
+        console.warn("Firebase handshake delayed. Local database active.");
+        resolveAuthReady(null);
+      }, 3000);
+
       try {
         const app = initializeApp(firebaseConfig);
         auth = getAuth(app);
@@ -836,14 +964,13 @@
           user = cred.user;
         }
         
+        clearTimeout(authTimeout);
         resolveAuthReady(user);
         setupFirestoreRealtimeSubscribers();
-        
-        await attemptAutoSessionRecovery();
       } catch (err) {
         console.warn("Ecosystem offline sandbox model active.", err);
+        clearTimeout(authTimeout);
         resolveAuthReady(null);
-        await attemptAutoSessionRecovery();
       }
     }
 
@@ -859,7 +986,7 @@
           defaultUpcomingClasses = items;
           renderClassesSchedule();
         }
-      }, (err) => console.warn("Firestore classes sync offline."));
+      }, (err) => console.warn("Classes sync offline."));
 
       const leaderboardCol = collection(db, 'artifacts', appId, 'public', 'data', 'leaderboard');
       onSnapshot(leaderboardCol, (snap) => {
@@ -878,75 +1005,7 @@
           fallbackLeaderboard = merged;
           renderLeaderboard();
         }
-      }, (err) => console.warn("Firestore leaderboard sync offline."));
-    }
-
-    // --- SESSION AUTO RECOVERY ---
-    async function attemptAutoSessionRecovery() {
-      const savedUser = localStorage.getItem("science_ix_saved_user");
-      const savedRole = localStorage.getItem("science_ix_saved_role") || "student";
-      
-      if (!savedUser) {
-        document.getElementById('view-login').classList.remove('hidden');
-        return;
-      }
-
-      const authenticatedUser = await authReadyPromise;
-
-      appState.user = savedUser;
-      appState.role = savedRole;
-      const userNameEl = document.getElementById('user-display-name');
-      if (userNameEl) userNameEl.innerText = savedUser;
-
-      toggleRoleSpecificElements(savedRole);
-
-      let recoveredXp = 0;
-      let recoveredStreak = 1;
-      let recoveredAvatar = "Milo";
-
-      const fallbackRecord = fallbackLeaderboard.find(x => x.name.replace(/\s*\(You\)/i, '').trim().toLowerCase() === savedUser.toLowerCase() || x.id === savedUser.toLowerCase());
-      if (fallbackRecord) {
-        recoveredXp = fallbackRecord.xp;
-        recoveredStreak = fallbackRecord.streak;
-        recoveredAvatar = fallbackRecord.avatar || "Milo";
-      }
-
-      if (db && authenticatedUser) {
-        try {
-          const studentDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'students', savedUser.toLowerCase());
-          const studentSnap = await getDoc(studentDocRef);
-
-          if (studentSnap.exists()) {
-            const restoredData = studentSnap.data();
-            appState.xp = restoredData.xp !== undefined ? restoredData.xp : recoveredXp;
-            appState.streak = restoredData.streak || recoveredStreak;
-            appState.avatar = restoredData.avatar || recoveredAvatar;
-            appState.completedItemsRegistry = restoredData.completedItemsRegistry || {};
-          } else {
-            appState.xp = recoveredXp;
-            appState.streak = recoveredStreak;
-            appState.avatar = recoveredAvatar;
-            appState.completedItemsRegistry = {};
-          }
-        } catch (err) {
-          appState.xp = recoveredXp;
-          appState.streak = recoveredStreak;
-          appState.avatar = recoveredAvatar;
-        }
-      } else {
-        appState.xp = recoveredXp;
-        appState.streak = recoveredStreak;
-        appState.avatar = recoveredAvatar;
-      }
-
-      document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${appState.avatar}`;
-      document.getElementById('header-xp-count').innerText = appState.xp;
-      document.getElementById('header-streak-count').innerText = appState.streak;
-
-      await pushCurrentStudentIntoLeaderboard();
-
-      document.getElementById('view-dashboard').classList.remove('hidden');
-      showToast(`Welcome back, ${savedUser}! Workspace restored.`, "success");
+      }, (err) => console.warn("Leaderboard sync offline."));
     }
 
     function toggleRoleSpecificElements(role) {
@@ -1030,7 +1089,8 @@
       toggleRoleSpecificElements(appState.role);
 
       appState.user = rawName;
-      document.getElementById('user-display-name').innerText = rawName;
+      const nameHeader = document.getElementById('user-display-name');
+      if (nameHeader) nameHeader.innerText = rawName;
 
       let recoveredXp = 0;
       let recoveredStreak = 1;
@@ -1070,27 +1130,41 @@
             showToast(`Created new profile for student: ${rawName}!`, "success");
           }
         } catch (err) {
-          console.warn("Ecosystem offline - unable to sync profile recovery.", err);
           appState.xp = recoveredXp;
           appState.streak = recoveredStreak;
           appState.avatar = recoveredAvatar;
           appState.completedItemsRegistry = {};
         }
       } else {
-        appState.xp = recoveredXp;
-        appState.streak = recoveredStreak;
-        appState.avatar = recoveredAvatar;
-        appState.completedItemsRegistry = {};
+        appState.xp = parseInt(localStorage.getItem(`science_ix_xp_${rawName.toLowerCase()}`)) || recoveredXp;
+        appState.streak = parseInt(localStorage.getItem(`science_ix_streak_${rawName.toLowerCase()}`)) || recoveredStreak;
+        appState.avatar = localStorage.getItem(`science_ix_avatar_${rawName.toLowerCase()}`) || recoveredAvatar;
+        const localRegistry = localStorage.getItem(`science_ix_registry_${rawName.toLowerCase()}`);
+        appState.completedItemsRegistry = localRegistry ? JSON.parse(localRegistry) : {};
       }
 
       localStorage.setItem("science_ix_saved_user", rawName);
       localStorage.setItem("science_ix_saved_role", appState.role);
+      
+      // Keep state values in local device storage explicitly
+      localStorage.setItem(`science_ix_xp_${rawName.toLowerCase()}`, appState.xp);
+      localStorage.setItem(`science_ix_streak_${rawName.toLowerCase()}`, appState.streak);
+      localStorage.setItem(`science_ix_avatar_${rawName.toLowerCase()}`, appState.avatar);
+      localStorage.setItem(`science_ix_registry_${rawName.toLowerCase()}`, JSON.stringify(appState.completedItemsRegistry));
 
-      document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${appState.avatar}`;
-      document.getElementById('header-xp-count').innerText = appState.xp;
-      document.getElementById('header-streak-count').innerText = appState.streak;
+      const avatarImg = document.getElementById('user-avatar');
+      if (avatarImg) avatarImg.src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${appState.avatar}`;
+      
+      const xpCount = document.getElementById('header-xp-count');
+      if (xpCount) xpCount.innerText = appState.xp;
+      
+      const streakCount = document.getElementById('header-streak-count');
+      if (streakCount) streakCount.innerText = appState.streak;
 
       await pushCurrentStudentIntoLeaderboard();
+      
+      // Sync curriculum load!
+      await loadCurriculumData();
 
       submitButton.disabled = false;
       submitButton.innerText = "Access Study Deck";
@@ -1098,6 +1172,55 @@
       document.getElementById('view-dashboard').classList.remove('hidden');
     };
 
+    window.handleLogout = function() {
+      localStorage.removeItem("science_ix_saved_user");
+      localStorage.removeItem("science_ix_saved_role");
+      
+      appState.user = "";
+      appState.role = "student";
+      appState.xp = 0;
+      appState.streak = 1;
+      appState.avatar = "Milo";
+      appState.completedItemsRegistry = {};
+
+      document.getElementById('login-name-input').value = "";
+      document.getElementById('view-dashboard').classList.add('hidden');
+      document.getElementById('view-classes-folders').classList.add('hidden');
+      document.getElementById('view-login').classList.remove('hidden');
+      showToast("Logged out successfully.", "info");
+    };
+
+    async function pushCurrentStudentIntoLeaderboard() {
+      try {
+        const selfId = appState.user.toLowerCase();
+        const existingIdx = fallbackLeaderboard.findIndex(x => x.id === selfId);
+
+        const studentRecord = {
+          id: selfId,
+          name: `${appState.user} (You)`,
+          streak: appState.streak,
+          xp: appState.xp,
+          avatar: appState.avatar
+        };
+
+        if (existingIdx !== -1) {
+          fallbackLeaderboard[existingIdx] = studentRecord;
+        } else {
+          fallbackLeaderboard.push(studentRecord);
+        }
+
+        renderLeaderboard();
+
+        if (db && auth && auth.currentUser) {
+          const leaderRef = doc(db, 'artifacts', appId, 'public', 'data', 'leaderboard', selfId);
+          await setDoc(leaderRef, studentRecord, { merge: true });
+        }
+      } catch (err) {
+        console.warn("Leaderboard registration failed safely:", err);
+      }
+    }
+
+    // --- DASHBOARD AND PROGRESS DRAWING ENGINES ---
     function renderDashboardOverview() {
       renderClassesSchedule();
       renderLeaderboard();
@@ -1187,23 +1310,90 @@
       lucide.createIcons();
     }
 
-    // --- PROGRESS CALCULATION LOGIC ---
+    // --- DOUBLE-SYNC GLOBAL CURRICULUM PERSISTENCE ENGINE ---
+    async function saveCurriculumData() {
+      // 1. Instantly Back up in Local device storage so loading is instantaneous next time
+      localStorage.setItem('science_ix_curriculum', JSON.stringify(folderSystemData));
+      localStorage.setItem('science_ix_exams', JSON.stringify(defaultMonthlyExams));
+      
+      // 2. Persist directly to Firestore public structural paths (Rule 1, public category)
+      if (db && auth && auth.currentUser) {
+        try {
+          const curriculumDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'curriculum_v2', 'structure');
+          await setDoc(curriculumDocRef, { folderSystemData, defaultMonthlyExams }, { merge: true });
+        } catch (err) {
+          console.warn("Firestore Curriculum sync delayed, locally backed up:", err);
+        }
+      }
+    }
+
+    async function loadCurriculumData() {
+      // 1. Restore local cache first to render immediately
+      const localCurriculum = localStorage.getItem('science_ix_curriculum');
+      if (localCurriculum) {
+        folderSystemData = JSON.parse(localCurriculum);
+      }
+      const localExams = localStorage.getItem('science_ix_exams');
+      if (localExams) {
+        defaultMonthlyExams = JSON.parse(localExams);
+      }
+
+      // 2. Fetch the latest live structures from the cloud
+      const authenticatedUser = await authReadyPromise;
+      if (db && authenticatedUser) {
+        try {
+          const curriculumDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'curriculum_v2', 'structure');
+          const snap = await getDoc(curriculumDocRef);
+          if (snap.exists()) {
+            const data = snap.data();
+            if (data.folderSystemData) {
+              folderSystemData = data.folderSystemData;
+              localStorage.setItem('science_ix_curriculum', JSON.stringify(folderSystemData));
+            }
+            if (data.defaultMonthlyExams) {
+              defaultMonthlyExams = data.defaultMonthlyExams;
+              localStorage.setItem('science_ix_exams', JSON.stringify(defaultMonthlyExams));
+            }
+          }
+        } catch (err) {
+          console.warn("Firestore curriculum loading offline fallback mode:", err);
+        }
+      }
+      
+      // Update UI components with the fresh values
+      renderSubjectsView();
+    }
+
+    // --- STUDENT-SPECIFIC SUBJECT PROGRESS COMPILATION ---
     function calculateSubjectProgressPercentage(subject) {
       const subData = folderSystemData[subject];
-      if (!subData || !subData.chapters || subData.chapters.length === 0) return 0;
-
+      if (!subData) return 0;
+      
       let totalItems = 0;
       let completedItems = 0;
 
-      subData.chapters.forEach(chap => {
-        if (chap.items) {
-          chap.items.forEach(item => {
-            const isCompleted = item.completed === true || appState.completedItemsRegistry[item.id] === true;
-            totalItems++;
-            if (isCompleted) {
-              completedItems++;
-            }
-          });
+      // 1. Account for Chapter items (Lectures, Notes, DPPs, solution guides)
+      if (subData.chapters) {
+        subData.chapters.forEach(chap => {
+          if (chap.items) {
+            chap.items.forEach(item => {
+              totalItems++;
+              const isCompleted = item.completed === true || appState.completedItemsRegistry[item.id] === true;
+              if (isCompleted) {
+                completedItems++;
+              }
+            });
+          }
+        });
+      }
+
+      // 2. Account for Secure Monthly Test completions
+      const exams = defaultMonthlyExams[subject] || [];
+      exams.forEach(exam => {
+        totalItems++;
+        const examUniqueId = exam.id || `exam-${exam.title}`;
+        if (appState.completedItemsRegistry[examUniqueId] === true) {
+          completedItems++;
         }
       });
 
@@ -1211,7 +1401,7 @@
       return Math.round((completedItems / totalItems) * 100);
     }
 
-    // --- LEVEL 1: RENDER SUBJECTS VIEW (DARK MODE STYLING FROM PIC 1) ---
+    // --- LEVEL 1: RENDER SUBJECTS VIEW ---
     window.renderSubjectsView = function() {
       const target = document.getElementById('subject-cards-list');
       if (!target) return;
@@ -1238,7 +1428,6 @@
               </div>
             </div>
 
-            <!-- Dynamic progress tracker matching Pic 1 layout in dark mode -->
             <div class="flex items-center gap-4">
               <div class="text-right">
                 <span class="text-xs font-bold text-slate-300">${liveProgress}%</span>
@@ -1336,7 +1525,7 @@
       if (titleLabel) titleLabel.innerText = chap.title;
       if (subLabel) subLabel.innerText = `${subject} Academic Deck`;
 
-      // Update Active Navigation Tab Colors
+      // Update Navigation Tab Colors
       const tabs = ["All", "Lectures", "DPPs", "Notes", "DPP PDFs"];
       tabs.forEach(tab => {
         const el = document.getElementById(`slot-tab-${tab}`);
@@ -1417,9 +1606,9 @@
           `;
         } else if (item.type === "DPP PDFs") {
           actionButtonHTML = `
-            <a href="${item.link || 'https://drive.google.com'}" target="_blank" onclick="launchPdfStudySession('${item.id}', '${item.title}')" class="bg-rose-600 hover:bg-rose-500 text-white text-xs px-3.5 py-1.5 rounded-lg font-bold transition flex items-center gap-1 font-sans text-center">
+            <button onclick="launchPdfStudySession('${item.id}', '${item.title}', '${item.link || 'https://drive.google.com'}')" class="bg-rose-600 hover:bg-rose-500 text-white text-xs px-3.5 py-1.5 rounded-lg font-bold transition flex items-center gap-1 font-sans text-center">
               Open PDF <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            </a>
+            </button>
           `;
         }
 
@@ -1450,16 +1639,6 @@
       lucide.createIcons();
     };
 
-    window.setSlotFilter = function(filterVal) {
-      appState.currentActiveTab = filterVal;
-      renderChapterDetails(appState.currentSubject, appState.currentChapterId);
-    };
-
-    window.setStatusFilter = function(statusVal) {
-      appState.currentStatusFilter = statusVal;
-      renderChapterDetails(appState.currentSubject, appState.currentChapterId);
-    };
-
     // --- STUDY CORE ACTIONS (ONE-TIME XP ALLOCATION STRICT RULE) ---
     window.simulateLectureWatch = function(id) {
       if (!appState.completedItemsRegistry[id]) {
@@ -1472,7 +1651,7 @@
       renderChapterDetails(appState.currentSubject, appState.currentChapterId);
     };
 
-    // --- TIME-BASED NOTE / PDF READING SESSION: (1 MINUTE = 2 XP) ---
+    // --- TIME-BASED NOTE & PDF READING SESSION: (1 MINUTE = 2 XP) ---
     window.launchNoteStudySession = function(id, title, text) {
       document.getElementById('note-viewer-header').innerText = title;
       document.getElementById('note-viewer-text-content').innerText = text || "No detailed handout text entered.";
@@ -1503,7 +1682,7 @@
       document.getElementById('modal-note-viewer').classList.add('flex');
     };
 
-    window.launchPdfStudySession = function(id, title) {
+    window.launchPdfStudySession = function(id, title, link) {
       // PDF tracker mimics note timer logic
       if (!appState.completedItemsRegistry[id]) {
         appState.completedItemsRegistry[id] = true;
@@ -1511,17 +1690,44 @@
         showToast("PDF solution deck opened! +15 XP", "success");
       }
 
-      // Re-trigger note timer simulation for PDF active window
+      // Configure floating study companion timer bar at top of window
+      document.getElementById('pdf-timer-title').innerText = title;
+      document.getElementById('pdf-timer-elapsed').innerText = "0 minutes";
+      document.getElementById('pdf-timer-xp-gained').innerText = "0";
+      
       appState.activeNoteReadingMinutes = 0;
       if (appState.activeNoteTimerId) clearInterval(appState.activeNoteTimerId);
 
+      // Slide in the timer overlay bar
+      const pdfBar = document.getElementById('pdf-study-timer-bar');
+      pdfBar.classList.remove('opacity-0', '-translate-y-24');
+      pdfBar.classList.add('opacity-100', 'translate-y-0');
+
       appState.activeNoteTimerId = setInterval(() => {
         appState.activeNoteReadingMinutes += 1;
+        document.getElementById('pdf-timer-elapsed').innerText = appState.activeNoteReadingMinutes + " minutes";
+        document.getElementById('pdf-timer-xp-gained').innerText = "" + (appState.activeNoteReadingMinutes * 2);
+        
         updateUserXp(2);
-        showToast(`Active PDF reading: ${appState.activeNoteReadingMinutes}m! +2 XP gained.`, "success");
+        showToast("Studied PDF for " + appState.activeNoteReadingMinutes + "m! +2 XP gained.", "success");
       }, 60000);
 
-      showToast("Keep the PDF active to generate study reward XP!", "info");
+      // Open document link safely in a background tab
+      window.open(link, '_blank');
+    };
+
+    window.terminatePdfStudySession = function() {
+      if (appState.activeNoteTimerId) {
+        clearInterval(appState.activeNoteTimerId);
+        appState.activeNoteTimerId = null;
+      }
+      
+      const pdfBar = document.getElementById('pdf-study-timer-bar');
+      pdfBar.classList.remove('opacity-100', 'translate-y-0');
+      pdfBar.classList.add('opacity-0', '-translate-y-24');
+      
+      renderChapterDetails(appState.currentSubject, appState.currentChapterId);
+      showToast("PDF study session compiled and synchronized.");
     };
 
     window.terminateNoteSession = function() {
@@ -1656,25 +1862,29 @@
       if (appState.examViolations >= 2) {
         triggerCheatingPenalty("Multiple tab changes / blur states observed.");
       } else {
-        showToast("WARNING: Tab defocus detected. Stay inside the proctored test workspace!", "error");
+        showToast("WARNING: Tab defocus detected. Stay focused inside test view!", "error");
       }
     }
 
     // --- SECURED METADATA REALTIME PERSISTENCE ---
     async function updateUserXp(delta) {
-      appState.xp += delta;
-      if (appState.xp < 0) appState.xp = 0;
-      
-      document.getElementById('header-xp-count').innerText = appState.xp;
+      try {
+        appState.xp += delta;
+        if (appState.xp < 0) appState.xp = 0;
+        
+        document.getElementById('header-xp-count').innerText = appState.xp;
 
-      const self = fallbackLeaderboard.find(x => x.id === appState.user.toLowerCase());
-      if (self) {
-        self.xp = appState.xp;
-        renderLeaderboard();
-      }
+        const self = fallbackLeaderboard.find(x => x.id === appState.user.toLowerCase());
+        if (self) {
+          self.xp = appState.xp;
+          renderLeaderboard();
+        }
 
-      if (db && auth.currentUser) {
-        try {
+        // Sync and back up to local device storage immediately
+        localStorage.setItem(`science_ix_xp_${appState.user.toLowerCase()}`, appState.xp);
+        localStorage.setItem(`science_ix_registry_${appState.user.toLowerCase()}`, JSON.stringify(appState.completedItemsRegistry));
+
+        if (db && auth && auth.currentUser) {
           const studentDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'students', appState.user.toLowerCase());
           await setDoc(studentDocRef, {
             xp: appState.xp,
@@ -1689,10 +1899,9 @@
             streak: appState.streak,
             avatar: appState.avatar
           }, { merge: true });
-
-        } catch (e) {
-          console.warn("Ecosystem offline - skipped cloud XP write.", e);
         }
+      } catch (e) {
+        console.warn("Failed to update user XP safely:", e);
       }
     }
 
@@ -1760,7 +1969,7 @@
       document.getElementById('modal-admin-add-test').classList.remove('flex');
     };
 
-    window.handleSecureTestSubmit = function(e) {
+    window.handleSecureTestSubmit = async function(e) {
       e.preventDefault();
       const testTitle = document.getElementById('form-test-title').value.trim();
       const question = document.getElementById('form-test-question').value.trim();
@@ -1778,6 +1987,10 @@
       };
 
       defaultMonthlyExams[appState.currentSubject] = [newTestPayload];
+      
+      // Save changes immediately!
+      await saveCurriculumData();
+      
       closeAdminAddTestModal();
       showToast(`Secure assessment configured for ${appState.currentSubject}!`, "success");
     };
@@ -1793,7 +2006,7 @@
       document.getElementById('modal-admin-add-chapter').classList.remove('flex');
     };
 
-    window.handleAddChapterSubmit = function(e) {
+    window.handleAddChapterSubmit = async function(e) {
       e.preventDefault();
       const code = document.getElementById('form-chap-code').value.trim();
       const title = document.getElementById('form-chap-title').value.trim();
@@ -1803,7 +2016,7 @@
       const subData = folderSystemData[appState.currentSubject];
       if (!subData) return;
 
-      const newChapId = `${appState.currentSubject.toLowerCase()}-ch-${Date.now()}`;
+      const newChapId = appState.currentSubject.toLowerCase() + "-ch-" + Date.now();
       const newChapter = {
         id: newChapId,
         code,
@@ -1814,16 +2027,24 @@
       };
 
       subData.chapters.push(newChapter);
+      
+      // Save changes dynamically!
+      await saveCurriculumData();
+      
       closeAddChapterModal();
       renderChaptersList(appState.currentSubject);
       showToast(`Created Chapter Module: ${title}!`, "success");
     };
 
-    window.deleteChapterModule = function(chapterId) {
+    window.deleteChapterModule = async function(chapterId) {
       const subData = folderSystemData[appState.currentSubject];
       if (!subData) return;
 
       subData.chapters = subData.chapters.filter(x => x.id !== chapterId);
+      
+      // Save changes dynamically!
+      await saveCurriculumData();
+      
       renderChaptersList(appState.currentSubject);
       showToast("Chapter directory purged permanently.", "info");
     };
@@ -1857,7 +2078,7 @@
       }
     };
 
-    window.handlePayloadSubmission = function(e) {
+    window.handlePayloadSubmission = async function(e) {
       e.preventDefault();
       const type = document.getElementById('payload-type').value;
       const title = document.getElementById('payload-title').value.trim();
@@ -1901,12 +2122,15 @@
         chap.dppCount += 1;
       }
 
+      // Save dynamic updates permanently!
+      await saveCurriculumData();
+
       closeAdminContentPublishModal();
       renderChapterDetails(appState.currentSubject, appState.currentChapterId);
       showToast("Resource material entry published!", "success");
     };
 
-    window.deleteResourceItem = function(id) {
+    window.deleteResourceItem = async function(id) {
       const subData = folderSystemData[appState.currentSubject];
       if (!subData) return;
 
@@ -1914,6 +2138,10 @@
       if (!chap) return;
 
       chap.items = chap.items.filter(x => x.id !== id);
+      
+      // Save changes dynamically!
+      await saveCurriculumData();
+
       renderChapterDetails(appState.currentSubject, appState.currentChapterId);
       showToast("Study resource deleted permanently.", "info");
     };
@@ -1977,22 +2205,24 @@
       document.getElementById('modal-avatar-selector').classList.remove('flex');
     };
     window.changeUserAvatar = async function(seed) {
-      appState.avatar = seed;
-      document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${seed}`;
-      
-      const self = fallbackLeaderboard.find(x => x.id === appState.user.toLowerCase());
-      if (self) {
-        self.avatar = seed;
-        renderLeaderboard();
-      }
+      try {
+        appState.avatar = seed;
+        document.getElementById('user-avatar').src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${seed}`;
+        
+        const self = fallbackLeaderboard.find(x => x.id === appState.user.toLowerCase());
+        if (self) {
+          self.avatar = seed;
+          renderLeaderboard();
+        }
 
-      if (db && auth.currentUser) {
-        try {
+        localStorage.setItem(`science_ix_avatar_${appState.user.toLowerCase()}`, seed);
+
+        if (db && auth && auth.currentUser) {
           const studentDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'students', appState.user.toLowerCase());
           await setDoc(studentDocRef, { avatar: seed }, { merge: true });
-        } catch (e) {
-          console.warn("Unable to persist updated avatar settings to cloud.", e);
         }
+      } catch (e) {
+        console.warn("Failed to change user avatar safely:", e);
       }
 
       closeAvatarSelectorModal();
@@ -2076,5 +2306,3 @@
   </script>
 </body>
 </html>
-
-```
